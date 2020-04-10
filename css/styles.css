@@ -8,6 +8,10 @@ table.product {
 	border-collapse: collapse;
 }
 
+table.information {	
+	border-collapse: collapse;
+}
+
 table, td, th {
 	border: 1px solid black;
 	padding: 5px;
