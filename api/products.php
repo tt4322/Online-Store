@@ -29,9 +29,9 @@
 
 			while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
 				$image = $row['image'];
-				
+
 				if (!file_exists('images/' . $image)) {
-					$image = 'placeholder.png';
+					$image = 'placeholder1.png';
 				}
 
 				echo "<tr>";
@@ -42,7 +42,7 @@
 				echo "<td>" . "<a href=\"api/buy.php?product_id=" . $row['product_id'] . "\">Buy</a>" . "</td>";
 				echo "</tr>";
 			}
-			
+
 			echo "</table>";
 
 			$dbh = null;
