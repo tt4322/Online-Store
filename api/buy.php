@@ -26,7 +26,7 @@
 
 				while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
 					$image = $row['image'];
-					
+
 					if (!file_exists('images/' . $image)) {
 						$image = 'placeholder.png';
 					}
@@ -41,6 +41,14 @@
 				echo "<h4>Request Discount Code:</h4>";
 				echo "<form>";
 				echo "<input type=\"textbox\"><br><br>";
+				echo "<input type=\"submit\">";
+				echo "</form>";
+				echo "</td></tr>";
+				echo "<tr><td>";
+				echo "<h4>Order:</h4>";
+				echo "<form action=\"order.php\" method=\"post\">";
+				echo "Code: <input type=\"text\" name=\"code\"> Credit Card ID: <input type=\"text\" name=\"credit_card_id\"><br><br>";
+				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
 				echo "<input type=\"submit\">";
 				echo "</form>";
 				echo "</td></tr>";
