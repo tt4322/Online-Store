@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css">
+		<script type="text/javascript" src="../js/code.js"></script>
 	</head>
 
 	<body>
@@ -39,15 +40,15 @@
 
 				echo "<tr><td>";
 				echo "<h4>Request Discount Code:</h4>";
-				echo "<form>";
-				echo "<input type=\"textbox\"><br><br>";
-				echo "<input type=\"submit\">";
+				echo "<form onsubmit=\"generateCode(" . $product_id . "); return false;\">";
+				echo "<input type=\"textbox\" id=\"code\"><br><br>";
+				echo "<input type=\"submit\" value=\"Generate\">";
 				echo "</form>";
 				echo "</td></tr>";
 				echo "<tr><td>";
 				echo "<h4>Order:</h4>";
 				echo "<form action=\"order.php\" method=\"post\">";
-				echo "Code: <input type=\"text\" name=\"code\"> Credit Card ID: <input type=\"text\" name=\"credit_card_id\"><br><br>";
+				echo "Code: <input type=\"text\"> Credit Card ID: <input type=\"text\" name=\"credit_card_id\"><br><br>";
 				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
 				echo "<input type=\"submit\">";
 				echo "</form>";
