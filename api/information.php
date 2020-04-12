@@ -20,7 +20,7 @@
 
 				$table_name = $_GET['table_name'];
 				$stmt;
-				
+
 				if (strcmp($table_name, "customers") == 0) {
 					echo "<h3>Customers</h3>";
 
@@ -107,6 +107,14 @@
 					}
 
 					echo "</table><br>";
+
+					# Discount code expiry request
+					echo "Insert discount code to check for expiry and current rate!<br>";
+					echo "<form action = discount.php>";
+					echo "<input type=\"textbox\" name=\"discountCode\"><br><br>";
+					echo "<input type=\"submit\">";
+					echo "</form><br><br>";
+
 				}
 				else if (strcmp($table_name, "credit_cards") == 0) {
 					echo "<h3>Credit Cards</h3>";
