@@ -20,8 +20,7 @@
 
         # Grab creation date of discount code
         $stmt = $dbh->prepare("SELECT date, processed FROM discount_codes WHERE (code = '$discountCode')");
-        #VALUES (:discountCode)
-        #$stmt->bindParam(':discountCode', $discountCode);
+
         if (!$stmt->execute()) {
             echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
         }
@@ -37,9 +36,14 @@
           $currentDate = date("Y-m-d H:i:s");
           $initialDate = $result["date"];
           $expiryDate = date("Y-m-d H:i:s", strtotime($initialDate . ' + 7 days'));
+          $processed = $result["processed"];
+
+          $stmt = $dbh->prepare("SELECT COUNT(*) AS count FROM orders WHERE (code = '$discountCode')");
+          $stmt->execute();
+          $result = $stmt->fetch(PDO::FETCH_NAMED);
 
           # Calculate discount rate
-          $count = $result["processed"];
+          $count = $result["count"];
           $rate = .05 + ($count / 10) * .05;
 
           # Max discount of 30%
@@ -51,13 +55,23 @@
           echo "Current date is $currentDate<br><br>";
           echo "For code $discountCode:<br><br>";
           echo "Code was created on $initialDate<br>";
-          echo "$count people used this code.<br>";
+
+          echo "This code was used for $count purchases.<br>";
 
           # If code is expired then print "Code is expired" along with the final rate
           if ($expiryDate < $currentDate)
           {
             echo "This code expired on $expiryDate<br>";
             echo "The final rate was $rate%<br>";
+
+            # If processed is not true (0) then set to true
+            if ($processed == 0)
+            {
+                $stmt = $dbh->prepare("UPDATE discount_codes SET processed='1' WHERE code=35261");
+                if (!$stmt->execute()) {
+                    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                }
+            }
           }
           else
           {
