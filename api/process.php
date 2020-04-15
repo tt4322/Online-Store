@@ -44,7 +44,8 @@
 						CC.name AS card_name,
 						CC.number,
 						CC.zip_code AS card_zip_code,
-						CC.expiration_date
+						CC.expiration_date,
+						P.max_discount_percentage
 					FROM discount_codes D, orders O, products P, customers C, credit_cards CC
 					WHERE D.code = O.code
 						AND O.product_id = P.product_id
@@ -66,10 +67,10 @@
 
 				$discountRow = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT);
 
-				if ($discountRow['total_discount_percentage'] < 30)
+				if ($discountRow['total_discount_percentage'] < $row['max_discount_percentage'])
 					$discount_percentage = $discountRow['total_discount_percentage'];
 				else
-					$discount_percentage = 30;
+					$discount_percentage = $row['max_discount_percentage'];
 				
 				if ($discount_percentage == 0)
 					$finalPrice = $row['price'];
