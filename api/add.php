@@ -8,17 +8,19 @@
     try {
         $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $username, $password);
 
-        $discount_percentage = 0;
         $price = $_POST['price'];
         $description = $_POST['description'];
         $name = $_POST['product_name'];
+        $discount_percentage = $_POST['discount_percentage'];
+        $max_discount_percentage = $_POST['max_discount_percentage'];
 
-        $stmt = $dbh->prepare("INSERT INTO products (name, description, price, discount_percentage) VALUES (:name, :description, :price, :discount_percentage)");
+        $stmt = $dbh->prepare("INSERT INTO products (name, description, price, discount_percentage, max_discount_percentage) VALUES (:name, :description, :price, :discount_percentage, :max_discount_percentage)");
 
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':description', $description);
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':discount_percentage', $discount_percentage);
+        $stmt->bindParam(':max_discount_percentage', $max_discount_percentage);
 
         $stmt->execute();
     }

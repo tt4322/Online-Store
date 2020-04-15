@@ -16,11 +16,17 @@
             echo "<input type=\"textbox\" name=\"description\"><br><br>";
             echo "<h3>Price:</h3>";
             echo "<input type=\"textbox\" name=\"price\"><br><br>";
+            echo "<h3>Discount Percentage:</h3>";
+            echo "<input type=\"textbox\" name=\"discount_percentage\" value=0><br><br>";
+            echo "<h3>Max Discount Percentage:</h3>";
+            echo "<input type=\"textbox\" name=\"max_discount_percentage\" value=0><br><br>";
             echo "<input type=\"submit\">";
             echo "</form>";
             echo "</td></tr>";
             echo "</td></tr>";
             echo "</table><br>";
          ?>
-	</body>
+
+        <a href="addRemove.php">Back</a>
+    </body>
 </html>
