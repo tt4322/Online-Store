@@ -11,10 +11,10 @@
 		<?php
 			//include "../autoload.php";
 
-            $dbhost = "***REMOVED***";
-            $dbname = "***REMOVED***";
-            $username = "***REMOVED***";
-            $password = "***REMOVED***";
+            $dbhost = "us-cdbr-iron-east-01.cleardb.net";
+            $dbname = "heroku_e78a82b925de5db";
+            $username = "b56c5bf006c12b";
+            $password = "5e05a4dd";
 
 			try {
 				$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $username, $password);
