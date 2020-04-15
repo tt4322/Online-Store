@@ -5,7 +5,7 @@
 	</head>
 
 	<body>
-		<h1>Online Store</h1>
+		<h1>Store Management</h1>
 
 		<div id="main">
 			<?php

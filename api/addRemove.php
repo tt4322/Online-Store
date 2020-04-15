@@ -5,8 +5,8 @@
 	</head>
 
 	<body>
-        <h1>Inventory Management</h1>
-        <br />
+		<h1>Store Management</h1>
+        <h3>Inventory Management</h3>
         <h3><a href="./addProduct.php">Add an Item</a></h3>
 		<?php
 			//include "../autoload.php";
@@ -38,7 +38,7 @@
 			while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
 				$image = $row['image'];
 
-				if (!file_exists('../images/' . $image)) {
+				if (!file_exists('images/' . $image)) {
 					$image = 'placeholder1.png';
 				}
 
@@ -51,9 +51,11 @@
 				echo "</tr>";
 			}
 
-			echo "</table>";
+			echo "</table><br>";
 
 			$dbh = null;
 		?>
+
+		<a href="../management.html">Back</a>
 	</body>
 </html>
