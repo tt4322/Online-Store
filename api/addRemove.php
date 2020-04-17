@@ -9,15 +9,10 @@
         <h3>Inventory Management</h3>
         <h3><a href="./addProduct.php">Add an Item</a></h3>
 		<?php
-			//include "../autoload.php";
-
-            $dbhost = "us-cdbr-iron-east-01.cleardb.net";
-            $dbname = "heroku_e78a82b925de5db";
-            $username = "b56c5bf006c12b";
-            $password = "5e05a4dd";
+			include "../autoload.php";
 
 			try {
-				$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $username, $password);
+				$dbh = new PDO('mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME'), env('DB_USERNAME'), env('DB_PASSWORD'));
 			}
 			catch (PDOException $e) {
 				echo $e->getMessage();
