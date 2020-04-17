@@ -27,7 +27,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM customers");
 					$stmt->execute();
 
-					echo "<table class=\"information\">
+					echo "<table class=\"general\">
 					<tr>
 					<th>Customer ID</th>
 					<th>First Name</th>
@@ -62,7 +62,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM orders");
 					$stmt->execute();
 
-					echo "<table class=\"information\">
+					echo "<table class=\"general\">
 					<tr>
 					<th>Order ID</th>
 					<th>Date</th>
@@ -89,11 +89,10 @@
 					$stmt= $dbh->prepare("SELECT * FROM discount_codes");
 					$stmt->execute();
 
-					echo "<table class=\"information\">
+					echo "<table class=\"general\">
 					<tr>
 					<th>Code</th>
 					<th>Date</th>
-					<th>Processed</th>
 					<th>Product ID</th>
 					</tr>";
 
@@ -101,20 +100,11 @@
 						echo "<tr>";
 						echo "<td>" . $row['code'] . "</td>";
 						echo "<td>" . $row['date'] . "</td>";
-						echo "<td>" . $row['processed'] . "</td>";
 						echo "<td>" . $row['product_id'] . "</td>";
 						echo "</tr>";
 					}
 
 					echo "</table><br>";
-
-					# Discount code expiry request
-					echo "Insert discount code to check for expiry and current rate!<br>";
-					echo "<form action = discount.php>";
-					echo "<input type=\"textbox\" name=\"discountCode\"><br><br>";
-					echo "<input type=\"submit\">";
-					echo "</form><br><br>";
-
 				}
 				else if (strcmp($table_name, "credit_cards") == 0) {
 					echo "<h3>Credit Cards</h3>";
@@ -122,7 +112,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM credit_cards");
 					$stmt->execute();
 
-					echo "<table class=\"information\">
+					echo "<table class=\"general\">
 					<tr>
 					<th>Credit Card ID</th>
 					<th>Name</th>
@@ -149,7 +139,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM products");
 					$stmt->execute();
 
-					echo "<table class=\"information\">
+					echo "<table class=\"products\">
 					<tr>
 					<th></th>
 					<th>Product ID</th>
