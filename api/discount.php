@@ -67,7 +67,7 @@
             # If processed is not true (0) then set to true
             if ($processed == 0)
             {
-                $stmt = $dbh->prepare("UPDATE discount_codes SET processed='1' WHERE code=35261");
+                $stmt = $dbh->prepare("UPDATE discount_codes SET processed='1' (WHERE code='$discountCode')");
                 if (!$stmt->execute()) {
                     echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
                 }
