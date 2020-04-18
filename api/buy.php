@@ -47,9 +47,19 @@
 				echo "<br></td></tr>";
 
 				echo "<tr><td>";
+				//order form
 				echo "<h4>Order:</h4>";
 				echo "<form action=\"order.php\" method=\"post\">";
+				//code input
 				echo "Code: <input type=\"text\" name=\"code\"><br>";
+				//customer info
+				echo "First Name: <input type='text' name='fname'> ";
+				echo "Last Name: <input type='text' name='lname'><br>";
+				echo "Phone #: <input type='tel' name='phone' placeholder='123-456-6789' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'> ";
+				echo "Email: <input type='email' name='email' required><br>";
+				echo "Street Address: <input name='address'> City: <input name='city'><br>";
+				echo "State: <input type='text' name='state'> Zip Code: <input type='number' name='zip_code'><br>";
+				//credit card info
 				echo "Credit Card #: <input type=\"text\" name=\"cc_num\"> ";
 				echo "Exp. Date: <input type=\"date\" name=\"exp_date\"><br>";
 				echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
