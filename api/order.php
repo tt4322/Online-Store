@@ -17,22 +17,35 @@
           $date = date("Y-m-d");
           $product_id = intval($_POST['product_id']);
           $code = $_POST['code'];
-          $credit_card_id = $_POST['credit_card_id'];
+          $cc_num = $_POST['cc_num'];
+					$exp_date = $_POST['exp_date'];
+					$cc_zip_code = $_POST['cc_zip_code'];
 
-          $stmt = $dbh->prepare("INSERT INTO orders (date, product_id, code, credit_card_id) VALUES (:date, :product_id, :code, :credit_card_id)");
-          $stmt->bindParam(':date', $date);
-          $stmt->bindParam(':product_id', $product_id);
-          $stmt->bindParam(':code', $code);
-          $stmt->bindParam(':credit_card_id', $credit_card_id);
+					$stmt = $dbh->prepare("SELECT credit_card_id FROM credit_cards WHERE number = :cc_num");
+					$stmt->bindParam(':cc_num', $cc_num);
+					$stmt->execute();
+					$result = $stmt->fetch();
+					$cc_id = $result["credit_card_id"];
 
-          $stmt->execute();
+					if(!($cc_id)){
+						$ccins = $dbh->prepare("INSERT INTO credit_cards (number, zip_code, expiration_date) VALUES (:cc_num, :cc_zip_code, :exp_date)");
+						$ccins->bindParam(':cc_num', $cc_num);
+						$ccins->bindParam(':cc_zip_code', $cc_zip_code);
+						$ccins->bindParam(':exp_date', $exp_date);
+						$ccins->execute();
+						$cc_id = $dbh->lastInsertID();
+					}
 
-          /*
-          $sql = "INSERT INTO orders (order_id, date, product_id, code, credit_card_id) VALUES (1, '1-1-2020', 1, 'A1B2C3', '1234')";
-          // use exec() because no results are returned
-          $dbh->exec($sql);
-          */
-          echo "Order Placed!";
+          $ustmt = $dbh->prepare("INSERT INTO orders (date, product_id, code, credit_card_id, customer_id) VALUES (:date, :product_id, :code, :cc_id, '1')");
+          $ustmt->bindParam(':date', $date);
+          $ustmt->bindParam(':product_id', $product_id);
+          $ustmt->bindParam(':code', $code);
+          $ustmt->bindParam(':cc_id', $cc_id);
+
+          $ustmt->execute();
+					$order_id = $dbh->lastInsertID();
+
+          echo "Order Placed! Order #: " . $order_id . "<br>";
         }
         catch (PDOException $e) {
           echo $e->getMessage();

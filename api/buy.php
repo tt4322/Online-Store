@@ -45,10 +45,14 @@
 				echo "<input type=\"submit\" value=\"Generate\">";
 				echo "</form>";
 				echo "<br></td></tr>";
+
 				echo "<tr><td>";
 				echo "<h4>Order:</h4>";
 				echo "<form action=\"order.php\" method=\"post\">";
-				echo "Code: <input type=\"text\"> Credit Card ID: <input type=\"text\" name=\"credit_card_id\"><br><br>";
+				echo "Code: <input type=\"text\" name=\"code\"><br>";
+				echo "Credit Card #: <input type=\"text\" name=\"cc_num\"> ";
+				echo "Exp. Date: <input type=\"date\" name=\"exp_date\"><br>";
+				echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
 				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
 				echo "<input type=\"submit\">";
 				echo "</form>";
