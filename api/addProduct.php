@@ -6,7 +6,7 @@
 
 	<body>
         <?php
-            echo "<table class=\"product\">";
+            echo "<table class=\"general\">";
             echo "<tr><td>";
             echo "<h2>Add an Item to the Inventory:</h2>";
             echo "<form action=\"add.php\" method=\"post\">";

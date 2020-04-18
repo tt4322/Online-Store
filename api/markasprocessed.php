@@ -24,7 +24,12 @@
 				$stmt = $dbh->prepare("UPDATE orders SET processed = 1 WHERE order_id = (?)");
 				$stmt->execute([$order_id]);
 
-				echo "Order " . $order_id . " marked as processed.<br><br>";
+				$count = $stmt->rowCount();
+
+				if ($count != 0)
+					echo "Order " . $order_id . " marked as processed.<br><br>";
+				else
+					echo "Order " . $order_id . " was not marked as processed.<br><br>";
 
 				$dbh = null;
 			?>

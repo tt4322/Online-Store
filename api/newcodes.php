@@ -21,16 +21,17 @@
 
 				$table_name = $_GET['table_name'];
 				$stmt= $dbh->prepare("
-					SELECT D.code, P.product_id, P.name
+					SELECT D.code, D.date, P.product_id, P.name
 					FROM discount_codes D, products P
 					WHERE DATE_ADD(date, INTERVAL 7 DAY) >= CURDATE()
 						AND D.product_id = P.product_id
 				");
 				$stmt->execute();
 
-				echo "<table class=\"information\">
+				echo "<table class=\"general\">
 				<tr>
 				<th>Code</th>
+				<th>Code Date</th>
 				<th>Product ID</th>
 				<th>Product Name</th>
 				<th></th>
@@ -40,9 +41,10 @@
 					if ($row['code'] != 0) {
 						echo "<tr>";
 						echo "<td>" . $row['code'] . "</td>";
+						echo "<td>" . $row['date'] . "</td>";
 						echo "<td>" . $row['product_id'] . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
-						echo "<td>" . "<a href=\"interestedcustomers.php?product_id=" . $row['product_id'] . "\">" . "Interested Customers" . "</a>" . "</td>";
+						echo "<td>" . "<a href=\"interestedcustomers.php?product_id=" . $row['product_id'] . "&code=" . $row['code'] . "\">" . "Interested Customers" . "</a>" . "</td>";
 
 						echo "</tr>";
 					}

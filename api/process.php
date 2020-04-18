@@ -45,6 +45,7 @@
 						CC.number,
 						CC.zip_code AS card_zip_code,
 						CC.expiration_date,
+						P.discount_percentage,
 						P.max_discount_percentage
 					FROM discount_codes D, orders O, products P, customers C, credit_cards CC
 					WHERE D.code = O.code
@@ -57,32 +58,7 @@
 
 				$row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT);
 
-				// Calculate discount
-				$stmt = $dbh->prepare("
-					SELECT SUM(P.discount_percentage) AS total_discount_percentage
-					FROM products P, orders O
-					WHERE O.code = (?) AND O.product_id = P.product_id
-				");
-				$stmt->execute([$row['code']]);
-
-				$discountRow = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT);
-
-				if ($discountRow['total_discount_percentage'] < $row['max_discount_percentage'])
-					$discount_percentage = $discountRow['total_discount_percentage'];
-				else
-					$discount_percentage = $row['max_discount_percentage'];
-				
-				if ($discount_percentage == 0)
-					$finalPrice = $row['price'];
-				else
-					$finalPrice = $row['price'] * (1 - ($discount_percentage / 100));
-
-				$finalPrice = number_format($finalPrice, 2);
-
-				if ($row['code'] == 0) {
-					$discount_percentage = 0;
-					$finalPrice = $row['price'];
-				}
+				include 'calculatediscount.php';
 
 				// Output
 				echo "<table class=\"product\">";

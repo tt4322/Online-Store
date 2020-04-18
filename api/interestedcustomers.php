@@ -19,6 +19,7 @@
 				}
 
 				$product_id = $_GET['product_id'];
+				$code = $_GET['code'];
 				$stmt= $dbh->prepare("
 					SELECT DISTINCT C.first_name, C.last_name, C.phone_number, C.email
 					FROM customers C, orders O
@@ -26,9 +27,9 @@
 				");
 				$stmt->execute([$product_id]);
 
-				echo "<h3>Customers That May Be Interested In Product " . $product_id . "</h3>";
+				echo "<h3>Customers That May Be Interested In Code " . $code . "</h3>";
 
-				echo "<table class=\"information\">
+				echo "<table class=\"general\">
 				<tr>
 				<th>First Name</th>
 				<th>Last Name</th>

@@ -21,13 +21,13 @@
 				}
 
 				$stmt = $dbh->prepare("
-					SELECT D.code, D.date AS code_date, O.order_id, O.date AS order_date, P.product_id, P.name, P.price
+					SELECT O.code, D.date AS code_date, O.order_id, O.date AS order_date, P.product_id, P.name, P.price
 					FROM discount_codes D, orders O, products P, credit_cards C
 					WHERE DATE_ADD(D.date, INTERVAL 7 DAY) < CURDATE()
-						AND D.code = O.code
+						AND (D.code = O.code OR O.code = 0)
 						AND O.product_id = P.product_id
 						AND O.credit_card_id = C.credit_card_id
-						AND O.processed = 0
+						AND (O.processed = 0)
 				");
 				$stmt->execute();
 

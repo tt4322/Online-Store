@@ -33,9 +33,9 @@
 					}
 
 					echo "<h3>" . $row['name'] . "</h3>";
-					echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width:300;height:300;\">" . "</td></tr>";
-					echo "<tr><td><h4>Description:</h4>" . $row['description'] . "</td></tr>";
-					echo "<tr><td><h4>Price:</h4>$" . $row['price'] . "</td></tr>";
+					echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width:300;height:300;\">" . "<br><br></td></tr>";
+					echo "<tr><td><h4>Description:</h4>" . $row['description'] . "<br><br></td></tr>";
+					echo "<tr><td><h4>Price:</h4>$" . $row['price'] . "<br><br></td></tr>";
 				}
 
 				echo "<tr><td>";
@@ -44,7 +44,7 @@
 				echo "<input type=\"textbox\" id=\"code\"><br><br>";
 				echo "<input type=\"submit\" value=\"Generate\">";
 				echo "</form>";
-				echo "</td></tr>";
+				echo "<br></td></tr>";
 
 				echo "<tr><td>";
 				echo "<h4>Order:</h4>";
@@ -56,7 +56,7 @@
 				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
 				echo "<input type=\"submit\">";
 				echo "</form>";
-				echo "</td></tr>";
+				echo "<br></td></tr>";
 				echo "</table><br>";
 
 				$dbh = null;

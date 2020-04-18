@@ -8,7 +8,8 @@ table.product {
 	border-collapse: collapse;
 }
 
-table.information {
+table.general {
+	width: 50%;
 	border-collapse: collapse;
 }
 
