@@ -55,12 +55,12 @@
 				//customer info
 				echo "First Name: <input type='text' name='fname'> ";
 				echo "Last Name: <input type='text' name='lname'><br>";
-				echo "Phone #: <input type='tel' name='phone' placeholder='123-456-6789' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'> ";
+				echo "Phone #: <input type='number' name='phone'> ";
 				echo "Email: <input type='email' name='email' required><br>";
 				echo "Street Address: <input name='address'> City: <input name='city'><br>";
 				echo "State: <input type='text' name='state'> Zip Code: <input type='number' name='zip_code'><br>";
 				//credit card info
-				echo "Credit Card #: <input type=\"text\" name=\"cc_num\"> ";
+				echo "Credit Card #: <input type=\"text\" name=\"cc_num\" required> ";
 				echo "Exp. Date: <input type=\"date\" name=\"exp_date\"><br>";
 				echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
 				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
