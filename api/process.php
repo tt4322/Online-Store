@@ -6,10 +6,10 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
-		<h3>Process Order</h3>
+		<div class="general">
+			<h1>Store Management</h1>
+			<h3>Process Order</h3>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -71,7 +71,7 @@
 
 				echo "<tr><td>";
 				echo "<h3>Product Information</h3>";
-				echo "<img src=\"../images/" . $image . "\" style=\"width:300;height:300;\">";
+				echo "<div style=\"text-align: center\"><img src=\"../images/" . $image . "\" style=\"width: 500px;\"></div>";
 				echo "<br><br><b>Product ID: </b>" . $row['product_id'];
 				echo "<br><br><b>Name: </b>" . $row['product_name'];
 				echo "<br><br><b>Description: </b>" . $row['description'];

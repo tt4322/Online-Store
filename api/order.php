@@ -5,9 +5,9 @@
 	</head>
 
 	<body>
-		<h1>Purchase</h1>
+		<div class="general" style="text-align: center">
+			<h1>Group Buy</h1>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -15,7 +15,6 @@
 					$dbh = new PDO('mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME'), env('DB_USERNAME'), env('DB_PASSWORD'));
 
 					// Order info
-					$date = date("Y-m-d");
 					$product_id = intval($_POST['product_id']);
 					$code = $_POST['code'];
 
@@ -102,13 +101,26 @@
 						$cc_id = $dbh->lastInsertID();
 					}
 
+					// Check code
+					$stmt = $dbh->prepare("
+						SELECT COUNT(*) AS count
+						FROM discount_codes WHERE code = (?)
+							AND product_id = (?)
+							AND DATE_ADD(date, INTERVAL 7 DAY) >= CURDATE()
+					");
+					$stmt->execute([$code, $product_id]);
+
+					$row = $stmt->fetch(PDO::FETCH_NAMED);
+					$count = $row['count'];
+
+					if ($count == 0)
+						$code = 0;
+
 					// Insert order
 					$ustmt = $dbh->prepare("
-						INSERT INTO orders
-						(date, product_id, code, credit_card_id, customer_id)
-						VALUES (:date, :product_id, :code, :cc_id, :customer_id)
+						INSERT INTO orders (product_id, code, credit_card_id, customer_id)
+						VALUES (:product_id, :code, :cc_id, :customer_id)
 					");
-					$ustmt->bindParam(':date', $date);
 					$ustmt->bindParam(':product_id', $product_id);
 					$ustmt->bindParam(':code', $code);
 					$ustmt->bindParam(':cc_id', $cc_id);
@@ -121,8 +133,8 @@
 						echo "Error placing order.<br><br>";
 					}
 					else {
-						echo "Order Placed!<br>";
-						echo "Order #: " . $order_id . "<br><br>";
+						echo "<h3>Order Placed!</h3>";
+						echo "You Order #: " . $order_id . "<br><br>";
 					}
 				}
 				catch (PDOException $e) {
@@ -131,8 +143,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="../index.html">Home</a>
+			<a href="../index.html">Home</a>
+		</div>
 	</body>
 </html>

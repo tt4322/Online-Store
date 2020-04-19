@@ -6,9 +6,9 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
+		<div class="general">
+			<h1>Store Management</h1>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -35,12 +35,12 @@
 					$image = 'placeholder.png';
 				}
 
-				echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width:300;height:300;\">" . "</td></tr>";
+				echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width: 500;\">" . "</td></tr>";
 				echo "<tr><td><br>";
 				echo "
 					<form action=\"processupdate.php\" method=\"POST\">
 						<input type=\"hidden\" name=\"product_id\" value=\"" . $row['product_id'] . "\">
-						Name:<br><br>
+						<h3>Name:
 						<input type=\"text\" name=\"name\" value=\"" . $row['name'] . "\"><br>
 						<br>Description:<br><br>
 						<textarea name=\"description\" rows=\"10\" cols=\"40\">" . $row['description'] . "</textarea><br>
@@ -51,6 +51,7 @@
 						<br>Max Discount Percentage:<br><br>
 						<input type=\"text\" name=\"max_discount_percentage\" value=\"" . $row['max_discount_percentage'] . "\"><br>
 						<br><input type=\"submit\" value=\"Update\">
+						</h3>
 					</form>
 				";
 				echo "</td></tr>";
@@ -59,8 +60,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="updateproducts.php">Back</a>
+			<a href="updateproducts.php">Back</a>
+		</div>
 	</body>
 </html>

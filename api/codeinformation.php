@@ -6,10 +6,10 @@
 	</head>
 
 	<body>
-		<h1>Group Buy</h1>
-		<h3>Code Information</h3>
+		<div class="general">
+			<h1>Group Buy</h1>
+			<h3>Code Information</h3>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -49,8 +49,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="../index.html">Back</a>
+			<a href="../index.html">Back</a>
+		</div>
 	</body>
 </html>

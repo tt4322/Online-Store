@@ -6,10 +6,10 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
-		<h3>Update Products/Set Discount Policies</h3>
+		<div class="general">
+			<h1>Store Management</h1>
+			<h3>Update Products/Set Discount Policies</h3>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -36,11 +36,11 @@
 					$image = $row['image'];
 
 					if (!file_exists('images/' . $image)) {
-						$image = 'placeholder1.png';
+						$image = 'placeholder.png';
 					}
 
 					echo "<tr>";
-					echo "<td>" . "<img src=\"../images/" . $image . "\" style=\"width:300;height:300;\">" . "</td>";
+					echo "<td style=\"text-align: center;\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
 					echo "<td>" . $row['name'] . "</td>";
 					echo "<td>" . $row['description'] . "</td>";
 					echo "<td>$" . $row['price'] . "</td>";
@@ -52,8 +52,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="../management.html">Back</a>
+			<a href="../management.html">Back</a>
+		</div>
 	</body>
 </html>

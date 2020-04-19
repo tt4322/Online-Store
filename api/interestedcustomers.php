@@ -5,9 +5,9 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
+		<div class="general">
+			<h1>Store Management</h1>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -50,8 +50,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="newcodes.php">Back</a>
+			<a href="newcodes.php">Back</a>
+		</div>
 	</body>
 </html>

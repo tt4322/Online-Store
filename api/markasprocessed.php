@@ -6,10 +6,10 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
-		<h3>Process Order</h3>
+		<div class="general" style="text-align: center;">
+			<h1>Store Management</h1>
+			<h3>Process Status</h3>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -27,14 +27,14 @@
 				$count = $stmt->rowCount();
 
 				if ($count != 0)
-					echo "Order " . $order_id . " marked as processed.<br><br>";
+					echo "Order " . $order_id . " has been marked as processed.<br><br>";
 				else
-					echo "Order " . $order_id . " was not marked as processed.<br><br>";
+					echo "Order " . $order_id . " has not been marked as processed.<br><br>";
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="readytoprocess.php">Back</a>
+			<a href="readytoprocess.php">Back</a>
+		</div>
 	</body>
 </html>

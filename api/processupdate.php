@@ -6,10 +6,10 @@
 	</head>
 
 	<body>
-		<h1>Store Management</h1>
-		<h3>Process Update</h3>
+		<div class="general" style="text-align: center">
+			<h1>Store Management</h1>
+			<h3>Update Status</h3>
 
-		<div id="main">
 			<?php
 				include "../autoload.php";
 
@@ -43,8 +43,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="updateproducts.php">Back</a>
+			<a href="updateproducts.php">Back</a>
+		</div>
 	</body>
 </html>
