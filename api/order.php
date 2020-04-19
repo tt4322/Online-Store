@@ -144,7 +144,7 @@
 				$dbh = null;
 			?>
 
-			<a href="../index.html">Home</a>
+			<a href="../index.php">Home</a>
 		</div>
 	</body>
 </html>

@@ -83,6 +83,6 @@
       ?>
     </div>
 
-    <a href="../management.html">Back</a>
+    <a href="../management.php">Back</a>
   </body>
 </html>

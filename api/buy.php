@@ -84,7 +84,7 @@
 				?>
 			</div>
 
-			<a href="../index.html">Back</a>
+			<a href="../index.php">Back</a>
 		</div>
 	</body>
 </html>

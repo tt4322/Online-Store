@@ -53,7 +53,7 @@
 				$dbh = null;
 			?>
 
-			<a href="../management.html">Back</a>
+			<a href="../management.php">Back</a>
 		</div>
 	</body>
 </html>

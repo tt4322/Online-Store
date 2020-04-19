@@ -17,7 +17,7 @@
 			</div>
 			<div id="main"></div><br>
 			<div style="text-align: center;">
-				<a href="management.html">Management</a><br><br>
+				<a href="management.php">Management</a><br><br>
 				Created by: COP 4710 Team 8
 			</div>
 		</div>

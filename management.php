@@ -10,7 +10,7 @@
 			<h1>Store Management</h1>
 			<h3>Menu</h3>
 			<div>
-				<a href="index.html">Front Page</a><br>
+				<a href="index.php">Front Page</a><br>
 				<a href="api/addRemove.php">Add/Remove Items</a><br>
 				<a href="api/updateproducts.php">Update Items/Set Discount Policies</a><br>
 				<a href="api/readytoprocess.php">Process Orders with Expired Codes</a><br>
