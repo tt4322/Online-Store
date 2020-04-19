@@ -46,22 +46,29 @@
 				echo "</form>";
 				echo "<br></td></tr>";
 
+				// Order form
 				echo "<tr><td>";
-				//order form
 				echo "<h4>Order:</h4>";
 				echo "<form action=\"order.php\" method=\"post\">";
-				//code input
+
+				// Code input
+				echo "<h5>Discount Code:</h5>";
 				echo "Code: <input type=\"text\" name=\"code\"><br>";
-				//customer info
+
+				// Customer info
+				echo "<h5>Shipping Info:</h5>";
 				echo "First Name: <input type='text' name='fname'> ";
 				echo "Last Name: <input type='text' name='lname'><br>";
-				echo "Phone #: <input type='number' name='phone'> ";
+				echo "Phone #: <input type='text' name='phone'> ";
 				echo "Email: <input type='email' name='email' required><br>";
 				echo "Street Address: <input name='address'> City: <input name='city'><br>";
-				echo "State: <input type='text' name='state'> Zip Code: <input type='number' name='zip_code'><br>";
-				//credit card info
+				echo "State: <input type='text' name='state'> Zip Code: <input type='text' name='zip_code'><br>";
+
+				// Credit card info
+				echo "<h5>Card Info:</h5>";
+				echo "Name on Card: <input type=\"text\" name=\"cc_name\"> ";
 				echo "Credit Card #: <input type=\"text\" name=\"cc_num\" required> ";
-				echo "Exp. Date: <input type=\"date\" name=\"exp_date\"><br>";
+				echo "Exp. Date: <input type=\"text\" name=\"exp_date\"><br>";
 				echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
 				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
 				echo "<input type=\"submit\">";
