@@ -15,7 +15,13 @@
 		$result = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT);
 
 		$count = $result["count"];
-		$total_discount_percentage = $row['discount_percentage'] + ($result["count"] / 10) * $row['discount_percentage'];
+		
+		if ($result["count"] > 0) {
+			$total_discount_percentage = $row['discount_percentage'] + ($result["count"] / 10) * $row['discount_percentage'];
+		}
+		else {
+			$total_discount_percentage = 0;
+		}
 
 		if ($total_discount_percentage < $row['max_discount_percentage'])
 			$discount_percentage = $total_discount_percentage;

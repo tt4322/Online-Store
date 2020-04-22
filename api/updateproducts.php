@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-		<script type="text/javascript" src="../js/code.js"></script>
-	</head>
+<?php include 'header.php';?>
 
-	<body>
 		<div class="general">
 			<h1>Store Management</h1>
 			<h3>Update Products/Set Discount Policies</h3>

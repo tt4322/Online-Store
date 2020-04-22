@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-		<script type="text/javascript" src="../js/code.js"></script>
-	</head>
+<?php include 'header.php';?>
 
-	<body>
 		<div class="general">
 			<h1>Store Management</h1>
 
@@ -28,8 +22,6 @@
 				echo "<h3>Update Product " . $row['product_id'] . "</h3>";
 
 				echo "<table class=\"product\">";
-
-				$image = $row['image'];
 
 				if (!file_exists('../images/' . $product_id . '.jpg')) {
 					$image = 'placeholder.png';

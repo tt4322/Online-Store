@@ -1,91 +1,85 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-		<script type="text/javascript" src="../js/code.js"></script>
-	</head>
+<?php include 'header.php';?>
 
-	<body>
-		<div class="general">
-			<h1>Online Store</h1>
+		<div class="container text-center">
+			<?php
+				include "../autoload.php";
 
-			<div id="main">
-				<?php
-					include "../autoload.php";
+				try {
+					$dbh = new PDO('mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME'), env('DB_USERNAME'), env('DB_PASSWORD'));
+				}
+				catch (PDOException $e) {
+					echo $e->getMessage();
+				}
 
-					try {
-						$dbh = new PDO('mysql:host=' . env('DB_HOST') . ';dbname=' . env('DB_NAME'), env('DB_USERNAME'), env('DB_PASSWORD'));
-					}
-					catch (PDOException $e) {
-						echo $e->getMessage();
-					}
+				$product_id = intval($_GET['product_id']);
+				$stmt = $dbh->prepare("SELECT * FROM products WHERE product_id = " . $product_id);
+				$stmt->execute();
 
-					$product_id = intval($_GET['product_id']);
-					$stmt = $dbh->prepare("SELECT * FROM products WHERE product_id = " . $product_id);
-					$stmt->execute();
+				$row = $stmt->fetch(PDO::FETCH_NAMED);
 
-					echo "<table class=\"product\">";
+				if (!file_exists('../images/' . $product_id . '.jpg')) {
+					$image = 'placeholder.png';
+				}
+				else {
+					$image = $product_id . '.jpg';
+				}
 
-					$row = $stmt->fetch(PDO::FETCH_NAMED);
+				echo "<div class=\"panel panel-primary\">";
+				echo "<div class=\"panel panel-heading\"><h3>{$row['name']}</h3></div><br>";
 
-					if (!file_exists('../images/' . $product_id . '.jpg')) {
-						$image = 'placeholder.png';
-					}
-					else {
-						$image = $product_id . '.jpg';
-					}
+				echo "<div class=\"row\">";
+				echo "<div class=\"col-lg-5 col-lg-offset-1\"><img src=\"../images/{$image}\" class=\"img-responsive\" style=\"width: 75%\"></div>";
+				echo "<div class=\"col-lg-5 text-left\">";
+				echo "<h4>Description:</h4>" . $row['description'] . "<br><br>";
+				echo "<h4>Price:</h4>$" . $row['price'] . "<br><br>";
+				echo "</div>";
+				echo "</div><br>";
 
-					echo "<h3>" . $row['name'] . "</h3>";
-					echo "<tr><td style=\"text-align: center;\">" . "<img src=\"../images/" . $image . "\" style=\"width: 500px\">" . "<br><br></td>";
-					echo "<td style=\"vertical-align: top; width: 40%;\"><h4>Description:</h4>" . $row['description'] . "<br><br>";
-					echo "<h4>Price:</h4>$" . $row['price'] . "<br><br></td></tr>";
+				// Order form
+				echo "<div class=\"row\">";
+				echo "<div class=\"col-lg-6 col-lg-offset-1 text-left\">";
+				echo "<h3>Order:</h3>";
+				echo "<form action=\"order.php\" method=\"POST\">";
 
-					// Code request
-					echo "<tr><td style=\"vertical-align: top;\" colspan=\"2\">";
-					echo "<h4>Request Discount Code:</h4>";
-					echo "<form onsubmit=\"generateCode(" . $product_id . "); return false;\">";
-					echo "<input type=\"textbox\" id=\"code\"><br><br>";
-					echo "<input type=\"submit\" value=\"Generate\">";
-					echo "</form>";
-					echo "<br></td></tr>";
+				// Code input
+				echo "<h4>Discount Code:</h4>";
+				echo "Code: <input type=\"text\" name=\"code\" id=\"order_code\"><br><br>";
 
-					// Order form
-					echo "<tr><td colspan=\"2\">";
-					echo "<div style=\"margin: 0px auto\">";
-					echo "<h3>Order:</h3>";
-					echo "<form action=\"order.php\" method=\"POST\">";
+				// Customer info
+				echo "<h4>Shipping Info:</h4>";
+				echo "First Name: <input type='text' name='fname'> ";
+				echo "Last Name: <input type='text' name='lname'><br>";
+				echo "Phone #: <input type='text' name='phone'> ";
+				echo "Email: <input type='email' name='email'><br>";
+				echo "Street Address: <input name='address'> City: <input name='city'><br>";
+				echo "State: <input type='text' name='state'> Zip Code: <input type='text' name='zip_code'><br><br>";
 
-					// Code input
-					echo "<h4>Discount Code:</h4>";
-					echo "Code: <input type=\"text\" name=\"code\" id=\"order_code\"><br>";
+				// Credit card info
+				echo "<h4>Card Info:</h4>";
+				echo "Name on Card: <input type=\"text\" name=\"cc_name\"> ";
+				echo "Credit Card #: <input type=\"text\" name=\"cc_num\"><br>";
+				echo "Exp. Date: <input type=\"text\" name=\"exp_date\"> ";
+				echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
+				echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
+				echo "<input type=\"submit\" value=\"Place Order\">";
+				echo "</form>";
+				echo "<br></div>";
 
-					// Customer info
-					echo "<h4>Shipping Info:</h4>";
-					echo "First Name: <input type='text' name='fname'> ";
-					echo "Last Name: <input type='text' name='lname'><br>";
-					echo "Phone #: <input type='text' name='phone'> ";
-					echo "Email: <input type='email' name='email'><br>";
-					echo "Street Address: <input name='address'> City: <input name='city'><br>";
-					echo "State: <input type='text' name='state'> Zip Code: <input type='text' name='zip_code'><br>";
+				// Code request
+				echo "<div class\"col-lg-4\">";
+				echo "<h4>Request Discount Code:</h4>";
+				echo "<form>";
+				echo "<input type=\"textbox\" id=\"code\"> ";
+				echo "<input type=\"button\" value=\"Generate\" onclick=\"generateCode(" . $product_id . ");\">";
+				echo "</form>";
+				echo "</div>";
+				echo "</div>";
+				echo "</div>";
 
-					// Credit card info
-					echo "<h4>Card Info:</h4>";
-					echo "Name on Card: <input type=\"text\" name=\"cc_name\"> ";
-					echo "Credit Card #: <input type=\"text\" name=\"cc_num\"><br>";
-					echo "Exp. Date: <input type=\"text\" name=\"exp_date\"> ";
-					echo "Zip Code: <input type=\"text\" name=\"cc_zip_code\"><br><br>";
-					echo "<input name=\"product_id\" type=\"hidden\" value=" . $product_id .">";
-					echo "<div id=\"error\"></div><br>";
-					echo "<input type=\"submit\" value=\"Place Order\">";
-					echo "</form>";
-					echo "<br></div></td></tr>";
-					echo "</table><br>";
+				$dbh = null;
+			?>
 
-					$dbh = null;
-				?>
-			</div>
-
-			<a href="../index.php">Back</a>
+			<div class="container"><a href="../index.php">Back</a></div><br>
 		</div>
 	</body>
 </html>

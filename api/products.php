@@ -11,15 +11,6 @@
 	$stmt = $dbh->prepare("SELECT * FROM products");
 	$stmt->execute();
 
-	echo "<table class=\"products\">
-	<tr>
-	<th></th>
-	<th>Name</th>
-	<th>Description</th>
-	<th>Price</th>
-	<th></th>
-	</tr>";
-
 	while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
 		$product_id = $row['product_id'];
 
@@ -30,16 +21,18 @@
 			$image = $product_id . '.jpg';
 		}
 
-		echo "<tr>";
-		echo "<td style=\"text-align:center\">" . "<img src=\"images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
-		echo "<td>" . $row['name'] . "</td>";
-		echo "<td>" . $row['description'] . "</td>";
-		echo "<td>$" . $row['price'] . "</td>";
-		echo "<td>" . "<a href=\"api/buy.php?product_id=" . $row['product_id'] . "\">Buy</a>" . "</td>";
-		echo "</tr>";
+		echo "<div class=\"col-lg-6\">";
+		echo "<div class=\"panel panel-primary\">";
+		echo "<div class=\"panel-heading\">{$row['name']}</div>";
+		echo "<div class=\"panel-body\"><img src=\"images/{$image}\" class=\"img-responsive center-block\" style=\"width: 50%\"></div>";
+		echo "<div class=\"panel-footer\">";
+		echo "{$row['description']}<br>";
+		echo "$" . $row['price'] . "<br>";
+		echo "<a href=\"api/buy.php?product_id={$row['product_id']}\">Buy</a>";
+		echo "</div>";
+		echo "</div>";
+		echo "</div>";
 	}
-
-	echo "</table>";
 
 	$dbh = null;
 ?>

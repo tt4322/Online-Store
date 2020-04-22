@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-	</head>
+<?php include 'header.php';?>
 
-	<body>
-		<div class="general">
+		<div class="container">
 			<h1>Store Management</h1>
 			<h3>Inventory Management</h3>
 			<h3><a href="./addProduct.php">Add an Item</a></h3>

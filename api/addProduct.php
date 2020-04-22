@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-	</head>
+<?php include 'header.php';?>
 
-	<body>
         <div class="general">
             <?php
                 echo "<h1>Store Management</h1>";

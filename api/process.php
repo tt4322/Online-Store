@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="../css/styles.css">
-		<script type="text/javascript" src="../js/code.js"></script>
-	</head>
+<?php include 'header.php';?>
 
-	<body>
 		<div class="general">
 			<h1>Store Management</h1>
 			<h3>Process Order</h3>
@@ -63,10 +57,13 @@
 				// Output
 				echo "<table class=\"product\">";
 
-				$image = $row['image'];
+				$product_id = $row['product_id'];
 
-				if (!file_exists('images/' . $image)) {
+				if (!file_exists('../images/' . $product_id . '.jpg')) {
 					$image = 'placeholder.png';
+				}
+				else {
+					$image = $product_id . '.jpg';
 				}
 
 				echo "<tr><td>";
