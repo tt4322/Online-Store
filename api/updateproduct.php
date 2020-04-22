@@ -35,7 +35,7 @@
 				echo "
 					<form action=\"processupdate.php\" method=\"POST\">
 						<input type=\"hidden\" name=\"product_id\" value=\"" . $row['product_id'] . "\">
-						<h3><b>Name:</b>
+						<h4><b>Name:</b>
 						<input type=\"text\" name=\"name\" value=\"" . $row['name'] . "\"><br>
 						<br><b>Description:</b><br><br>
 						<textarea name=\"description\" rows=\"10\" cols=\"40\">" . $row['description'] . "</textarea><br>
@@ -46,7 +46,7 @@
 						<br><b>Max Discount Percentage:</b><br><br>
 						<input type=\"text\" name=\"max_discount_percentage\" value=\"" . $row['max_discount_percentage'] . "\"><br>
 						<br><input type=\"submit\" value=\"Update\">
-						</h3>
+						</h4>
 					</form>
 				";
 				echo "</td></tr>";
