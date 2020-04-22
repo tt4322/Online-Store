@@ -21,10 +21,13 @@
 	</tr>";
 
 	while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
-		$image = $row['image'];
+		$product_id = $row['product_id'];
 
-		if (!file_exists('images/' . $image)) {
+		if (!file_exists('../images/' . $product_id . '.jpg')) {
 			$image = 'placeholder.png';
+		}
+		else {
+			$image = $product_id . '.jpg';
 		}
 
 		echo "<tr>";
