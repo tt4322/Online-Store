@@ -152,13 +152,17 @@
 
 					while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
 						$image = $row['image'];
+						$product_id = $row['product_id'];
 
-						if (!file_exists('images/' . $image)) {
+						if (!file_exists('../images/' . $product_id . '.jpg')) {
 							$image = 'placeholder.png';
+						}
+						else {
+							$image = $product_id . '.jpg';
 						}
 
 						echo "<tr>";
-						echo "<td>" . "<img src=\"../images/" . $image . "\" style=\"width: 300px\">" . "</td>";
+						echo "<td style=\"text-align: center;\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
 						echo "<td>" . $row['product_id'] . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>" . $row['description'] . "</td>";
