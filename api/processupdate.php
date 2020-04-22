@@ -23,7 +23,7 @@
 				$product_id = intval($_POST['product_id']);
 				$name = $_POST['name'];
 				$description = $_POST['description'];
-				$price = intval($_POST['price']);
+				$price = $_POST['price'];
 				$discount_percentage = intval($_POST['discount_percentage']);
 				$max_discount_percentage = intval($_POST['max_discount_percentage']);
 							
