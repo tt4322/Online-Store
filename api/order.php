@@ -38,8 +38,13 @@
 					$row = $stmt->fetch(PDO::FETCH_NAMED);
 					$count = $row['count'];
 
-					if ($code == "")
+					if ($code == "") {
 						$code = 0;
+						$count = 1;
+					}
+					else if ($code == 0) {
+						$count = 0;
+					}
 
 					echo "<div class=\"container text-center\">";
 

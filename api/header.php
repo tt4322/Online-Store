@@ -18,4 +18,29 @@
 				<h1>Group Buy</h1>
 				<h4><i>Group Discounts</i></h4>
 			</div>
-		</div><br>
+		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<a class="navbar-brand" href="#">Group Buy</a>
+				</div>
+				<ul class="nav navbar-nav">
+				<?php
+					if (strpos(getcwd(), "api") !== false)
+						echo "<li><a href=\"../index.php\">Home</a></li>";
+					else
+						echo "<li><a href=\"index.php\">Home</a></li>";
+
+					if (strpos(getcwd(), "api") !== false)
+						echo "<li><a href=\"../management.php\">Manage</a></li>";
+					else
+						echo "<li><a href=\"management.php\">Manage</a></li>";
+
+					// if (strpos(getcwd(), "api") !== false)
+					// 	echo "<li><a href=\"logout.php\">Logout</a></li>";
+					// else
+					// 	echo "<li><a href=\"api/logout.php\">Logout</a></li>";
+				?>
+				</ul>
+			</div>
+		</nav><br>
