@@ -22,7 +22,7 @@
 				$product_id = intval($_GET['product_id']);
 				$stmt = $dbh->prepare("SELECT * FROM products WHERE product_id = (?)");
 				$stmt->execute([$product_id]);
-				
+
 				$row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT);
 
 				echo "<h3>Update Product " . $row['product_id'] . "</h3>";
@@ -31,8 +31,11 @@
 
 				$image = $row['image'];
 
-				if (!file_exists('images/' . $image)) {
+				if (!file_exists('../images/' . $product_id . '.jpg')) {
 					$image = 'placeholder.png';
+				}
+				else {
+					$image = $product_id . '.jpg';
 				}
 
 				echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width: 500;\">" . "</td></tr>";

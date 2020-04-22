@@ -28,8 +28,6 @@
 
 					$row = $stmt->fetch(PDO::FETCH_NAMED);
 
-					//$image = $row['image'];
-
 					if (!file_exists('../images/' . $product_id . '.jpg')) {
 						$image = 'placeholder.png';
 					}
