@@ -9,7 +9,7 @@
 			<h1>Store Management</h1>
 			<h3>Inventory Management</h3>
 			<h3><a href="./addProduct.php">Add an Item</a></h3>
-			
+
 			<?php
 				include "../autoload.php";
 
@@ -33,10 +33,13 @@
 				</tr>";
 
 				while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
-					$image = $row['image'];
+					$product_id = $row['product_id'];
 
-					if (!file_exists('images/' . $image)) {
+					if (!file_exists('../images/' . $product_id . '.jpg')) {
 						$image = 'placeholder.png';
+					}
+					else {
+						$image = $product_id . '.jpg';
 					}
 
 					echo "<tr>";
