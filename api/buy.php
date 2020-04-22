@@ -28,10 +28,13 @@
 
 					$row = $stmt->fetch(PDO::FETCH_NAMED);
 
-					$image = $row['image'];
+					//$image = $row['image'];
 
-					if (!file_exists('images/' . $image)) {
+					if (!file_exists('../images/' . $product_id . '.jpg')) {
 						$image = 'placeholder.png';
+					}
+					else {
+						$image = $product_id . '.jpg';
 					}
 
 					echo "<h3>" . $row['name'] . "</h3>";
