@@ -108,8 +108,8 @@
 
 				$dbh = null;
 			?>
-		</div>
 
-		<a href="readytoprocess.php">Back</a>
+			<a href="readytoprocess.php">Back</a>
+		</div>
 	</body>
 </html>
