@@ -21,7 +21,7 @@
 
 				echo "<h3>Update Product " . $row['product_id'] . "</h3>";
 
-				echo "<table class=\"product\">";
+				echo "<table class=\"table\">";
 
 				if (!file_exists('../images/' . $product_id . '.jpg')) {
 					$image = 'placeholder.png';
@@ -30,20 +30,20 @@
 					$image = $product_id . '.jpg';
 				}
 
-				echo "<tr style=\"text-align:center\"><td>" . "<img src=\"../images/" . $image . "\" style=\"width: 500;\">" . "</td></tr>";
-				echo "<tr><td><br>";
+				echo "<tr style=\"text-align:center\"><td><br>" . "<img src=\"../images/" . $image . "\" style=\"width: 500;\">" . "</td></tr>";
+				echo "<tr><td>";
 				echo "
 					<form action=\"processupdate.php\" method=\"POST\">
 						<input type=\"hidden\" name=\"product_id\" value=\"" . $row['product_id'] . "\">
-						<h3>Name:
+						<h3><b>Name:</b>
 						<input type=\"text\" name=\"name\" value=\"" . $row['name'] . "\"><br>
-						<br>Description:<br><br>
+						<br><b>Description:</b><br><br>
 						<textarea name=\"description\" rows=\"10\" cols=\"40\">" . $row['description'] . "</textarea><br>
-						<br>Price:<br><br>
+						<br><b>Price:</b><br><br>
 						<input type=\"text\" name=\"price\" value=\"" . $row['price'] . "\"><br>
-						<br>Discount Percentage:<br><br>
+						<br><b>Discount Percentage:</b><br><br>
 						<input type=\"text\" name=\"discount_percentage\" value=\"" . $row['discount_percentage'] . "\"><br>
-						<br>Max Discount Percentage:<br><br>
+						<br><b>Max Discount Percentage:</b><br><br>
 						<input type=\"text\" name=\"max_discount_percentage\" value=\"" . $row['max_discount_percentage'] . "\"><br>
 						<br><input type=\"submit\" value=\"Update\">
 						</h3>
@@ -51,12 +51,12 @@
 				";
 				echo "</td></tr>";
 
-				echo "</table><br>";
+				echo "</table>";
 
 				$dbh = null;
 			?>
 
-			<a href="updateproducts.php">Back</a>
+			<a href="updateproducts.php">Back</a><br><br>
 		</div>
 	</body>
 </html>

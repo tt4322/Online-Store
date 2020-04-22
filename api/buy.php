@@ -37,8 +37,8 @@
 
 				// Order form
 				echo "<div class=\"row\">";
-				echo "<div class=\"col-lg-6 col-lg-offset-1 text-left\">";
-				echo "<h3>Order:</h3>";
+				echo "<div class=\"col-lg-6 col-lg-offset-1 text-left\" style=\"background-color: #EBEDEF\">";
+				echo "<h3 style=\"text-align: center\">Order</h3>";
 				echo "<form action=\"order.php\" method=\"POST\">";
 
 				// Code input
@@ -73,7 +73,7 @@
 				echo "<input type=\"button\" value=\"Generate\" onclick=\"generateCode(" . $product_id . ");\">";
 				echo "</form>";
 				echo "</div>";
-				echo "</div>";
+				echo "</div><br>";
 				echo "</div>";
 
 				$dbh = null;

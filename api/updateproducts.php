@@ -17,7 +17,7 @@
 				$stmt = $dbh->prepare("SELECT * FROM products");
 				$stmt->execute();
 
-				echo "<table class=\"products\">
+				echo "<table class=\"table table-striped\">
 				<tr>
 				<th></th>
 				<th>Name</th>
@@ -38,7 +38,7 @@
 					}
 
 					echo "<tr>";
-					echo "<td style=\"text-align: center;\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
+					echo "<td style=\"text-align: center; padding: 15px\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
 					echo "<td>" . $row['name'] . "</td>";
 					echo "<td>" . $row['description'] . "</td>";
 					echo "<td>$" . $row['price'] . "</td>";
@@ -51,7 +51,7 @@
 				$dbh = null;
 			?>
 
-			<a href="../management.php">Back</a>
+			<a href="../management.php">Back</a><br><br>
 		</div>
 	</body>
 </html>

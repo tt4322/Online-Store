@@ -16,6 +16,6 @@
 		<div class="jumbotron">
 			<div class="container text-center">
 				<h1>Group Buy</h1>
-				<h4>Group Discounts</h4>
+				<h4><i>Group Discounts</i></h4>
 			</div>
 		</div><br>

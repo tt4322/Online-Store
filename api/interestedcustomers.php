@@ -24,7 +24,7 @@
 
 				echo "<h3>Customers That May Be Interested In Code " . $code . "</h3>";
 
-				echo "<table class=\"general\">
+				echo "<table class=\"table table-stripped\">
 				<tr>
 				<th>First Name</th>
 				<th>Last Name</th>

@@ -22,7 +22,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM customers");
 					$stmt->execute();
 
-					echo "<table class=\"general\">
+					echo "<table class=\"table table-striped\">
 					<tr>
 					<th>Customer ID</th>
 					<th>First Name</th>
@@ -49,7 +49,7 @@
 						echo "</tr>";
 					}
 
-					echo "</table><br>";
+					echo "</table>";
 				}
 				else if (strcmp($table_name, "orders") == 0) {
 					echo "<h3>Orders</h3>";
@@ -57,7 +57,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM orders");
 					$stmt->execute();
 
-					echo "<table class=\"general\">
+					echo "<table class=\"table table-striped\">
 					<tr>
 					<th>Order ID</th>
 					<th>Date</th>
@@ -76,7 +76,7 @@
 						echo "</tr>";
 					}
 
-					echo "</table><br>";
+					echo "</table>";
 				}
 				else if (strcmp($table_name, "discount_codes") == 0) {
 					echo "<h3>Discount Codes</h3>";
@@ -84,7 +84,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM discount_codes");
 					$stmt->execute();
 
-					echo "<table class=\"general\">
+					echo "<table class=\"table table-striped\">
 					<tr>
 					<th>Code</th>
 					<th>Date</th>
@@ -99,7 +99,7 @@
 						echo "</tr>";
 					}
 
-					echo "</table><br>";
+					echo "</table>";
 				}
 				else if (strcmp($table_name, "credit_cards") == 0) {
 					echo "<h3>Credit Cards</h3>";
@@ -107,7 +107,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM credit_cards");
 					$stmt->execute();
 
-					echo "<table class=\"general\">
+					echo "<table class=\"table table-striped\">
 					<tr>
 					<th>Credit Card ID</th>
 					<th>Name</th>
@@ -126,7 +126,7 @@
 						echo "</tr>";
 					}
 
-					echo "</table><br>";
+					echo "</table>";
 				}
 				else if (strcmp($table_name, "products") == 0) {
 					echo "<h3>Products</h3>";
@@ -134,7 +134,7 @@
 					$stmt= $dbh->prepare("SELECT * FROM products");
 					$stmt->execute();
 
-					echo "<table class=\"products\">
+					echo "<table class=\"table table-striped\"\">
 					<tr>
 					<th></th>
 					<th>Product ID</th>
@@ -157,7 +157,7 @@
 						}
 
 						echo "<tr>";
-						echo "<td style=\"text-align: center;\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
+						echo "<td style=\"text-align: center; padding: 15px\">" . "<img src=\"../images/" . $image . "\" style=\"width: 300px;\">" . "</td>";
 						echo "<td>" . $row['product_id'] . "</td>";
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>" . $row['description'] . "</td>";
@@ -167,13 +167,13 @@
 						echo "</tr>";
 					}
 
-					echo "</table><br>";
+					echo "</table>";
 				}
 
 				$dbh = null;
 			?>
 
-			<a href="../management.php">Back</a>
+			<a href="../management.php">Back</a><br><br>
 		</div>
 	</body>
 </html>

@@ -23,7 +23,7 @@
 				");
 				$stmt->execute();
 
-				echo "<table class=\"general\">
+				echo "<table class=\"table table-striped\">
 				<tr>
 				<th>Code</th>
 				<th>Code Date</th>

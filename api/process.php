@@ -55,7 +55,7 @@
 				include 'calculatediscount.php';
 
 				// Output
-				echo "<table class=\"product\">";
+				echo "<table class=\"table\">";
 
 				$product_id = $row['product_id'];
 
@@ -67,8 +67,7 @@
 				}
 
 				echo "<tr><td>";
-				echo "<h3>Product Information</h3>";
-				echo "<div style=\"text-align: center\"><img src=\"../images/" . $image . "\" style=\"width: 500px;\"></div>";
+				echo "<br><div style=\"text-align: center\"><img src=\"../images/" . $image . "\" style=\"width: 500px;\"></div>";
 				echo "<br><br><b>Product ID: </b>" . $row['product_id'];
 				echo "<br><br><b>Name: </b>" . $row['product_name'];
 				echo "<br><br><b>Description: </b>" . $row['description'];

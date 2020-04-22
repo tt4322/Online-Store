@@ -25,7 +25,7 @@
 				");
 				$stmt->execute();
 
-				echo "<table class=\"products\">
+				echo "<table class=\"table table-hover\">
 				<tr>
 				<th>Code</th>
 				<th>Code Date</th>
