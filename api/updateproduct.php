@@ -44,9 +44,8 @@
 						<br><b>Discount Percentage:</b><br><br>
 						<input type=\"text\" name=\"discount_percentage\" value=\"" . $row['discount_percentage'] . "\"><br>
 						<br><b>Max Discount Percentage:</b><br><br>
-						<input type=\"text\" name=\"max_discount_percentage\" value=\"" . $row['max_discount_percentage'] . "\"><br>
+						<input type=\"text\" name=\"max_discount_percentage\" value=\"" . $row['max_discount_percentage'] . "\"><br></h4>
 						<br><input type=\"submit\" value=\"Update\">
-						</h4>
 					</form>
 				";
 				echo "</td></tr>";
