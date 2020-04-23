@@ -142,8 +142,8 @@
 					<th>Name</th>
 					<th>Description</th>
 					<th>Price</th>
-					<th>Image</th>
 					<th>Discount Percentage</th>
+					<th>Max Discount Percentage</th>
 					</tr>";
 
 					while ($row = $stmt->fetch(PDO::FETCH_NAMED, PDO::FETCH_ORI_NEXT)) {
@@ -163,8 +163,8 @@
 						echo "<td>" . $row['name'] . "</td>";
 						echo "<td>" . $row['description'] . "</td>";
 						echo "<td>" . $row['price'] . "</td>";
-						echo "<td>" . $row['image'] . "</td>";
 						echo "<td>" . $row['discount_percentage'] . "</td>";
+						echo "<td>" . $row['max_discount_percentage'] . "</td>";
 						echo "</tr>";
 					}
 
