@@ -18,7 +18,7 @@
 					$stmt = $dbh->prepare("
 						SELECT *
 						FROM discount_codes D, products P, (SELECT COUNT(*) AS count FROM orders WHERE code = (?)) AS C
-						WHERE D.code = (?)
+						WHERE D.code = (?) AND P.product_id = D.product_id
 					");
 					$stmt->execute([$code, $code]);
 

@@ -31,7 +31,7 @@
 					$image = $product_id . '.jpg';
 				}
 
-				echo "<tr style=\"text-align:center\"><td><br>" . "<img src=\"../images/" . $image . "\" style=\"width: 500;\">" . "</td></tr>";
+				echo "<tr style=\"text-align:center\"><td><br>" . "<img src=\"../images/" . $image . "\" style=\"width: 500px;\">" . "</td></tr>";
 				echo "<tr><td>";
 				echo "
 					<form action=\"processupdate.php\" method=\"POST\">
